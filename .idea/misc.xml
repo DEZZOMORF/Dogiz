@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/card_view_style.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/round_corner_toggle.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/activity_main.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/fragment_login.xml" value="0.375" />

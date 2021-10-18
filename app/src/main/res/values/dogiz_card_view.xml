@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style
+        name="DogizCardViewStyle" parent="CardView">
+        <item name="android:layout_margin">5dip</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+</resources>

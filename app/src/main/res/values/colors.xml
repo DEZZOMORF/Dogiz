@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="main_violet">#7E31FD</color>
-    <color name="editText">#F8FAFD</color>
+    <color name="editTextBackground">#F8FAFD</color>
     <color name="button">#01C297</color>
     <color name="grey">#B3B3BC</color>
 
