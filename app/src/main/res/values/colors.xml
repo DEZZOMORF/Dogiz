@@ -12,5 +12,6 @@
     <color name="editTextBackground">#F8FAFD</color>
     <color name="button">#01C297</color>
     <color name="grey">#B3B3BC</color>
+    <color name="red">#FF2F54</color>
 
 </resources>

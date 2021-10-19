@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Dogiz</string>
-    <string name="login_title">Hello!</string>
-    <string name="phone_number">Phone number</string>
-    <string name="login_subtitle">Please enter your phone number</string>
+    <string name="login_phone_title">Hello!</string>
+    <string name="login_code_title">Get started</string>
+    <string name="login_phone_hint">Phone number</string>
+    <string name="login_code_hint">Confirmation code</string>
+    <string name="login_phone_subtitle">Please enter your phone number</string>
+    <string name="login_code_subtitle">Please enter confirmation code from sms</string>
+    <string name="login_err_code_subtitle">Wrong confirmation code</string>
     <string name="btnContinue">CONTINUE</string>
 </resources>

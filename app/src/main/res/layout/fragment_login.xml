@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <data>
-
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/cardBackground"
+            app:layout_constraintTop_toTopOf="@+id/cardBackground"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+        <ImageView
             android:id="@+id/cardBackground"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="32dp"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="32dp"
             android:scaleType="fitStart"
             app:layout_constraintBottom_toBottomOf="@+id/illustration"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +45,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:paddingVertical="8dp"
-            android:text="@string/login_title"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,10 +56,31 @@
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_subtitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/inputHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/phoneNumberCardView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subtitle" />
+
+        <TextView
+            android:id="@+id/inputErrHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:textSize="12sp"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toTopOf="@+id/phoneNumberCardView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subtitle" />
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/phoneNumberCardView"
@@ -63,24 +88,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnSendPhoneNumber"
+            app:layout_constraintBottom_toTopOf="@+id/btnContinue"
             app:layout_constraintTop_toBottomOf="@+id/subtitle">
 
             <EditText
                 android:id="@+id/phoneNumberInput"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:background="@color/editTextBackground"
-                android:hint="@string/phone_number"
                 android:inputType="phone"
-                android:paddingHorizontal="16dp"
-                android:textColorHint="@color/grey"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:text="+380674642372"
                 app:layout_constraintBottom_toTopOf="parent"
                 app:layout_constraintTop_toBottomOf="parent" />
         </androidx.cardview.widget.CardView>
 
+        <include
+            android:id="@+id/codeInputInclude"
+            layout="@layout/code_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnContinue"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:layout_editor_absoluteX="16dp" />
+
         <androidx.cardview.widget.CardView
-            android:id="@+id/btnSendPhoneNumber"
+            android:id="@+id/btnContinue"
             style="@style/DogizCardViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -101,5 +136,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.cardview.widget.CardView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/btnContinue"
+            app:layout_constraintEnd_toEndOf="@+id/btnContinue"
+            app:layout_constraintStart_toStartOf="@+id/btnContinue"
+            app:layout_constraintTop_toTopOf="@+id/btnContinue" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
