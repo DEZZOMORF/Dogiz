@@ -9,9 +9,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.lampa.dogiz.R
 import com.lampa.dogiz.databinding.FragmentLoginBinding
-import com.lampa.dogiz.model.Step
 import com.lampa.dogiz.util.UiState
 import com.lampa.dogiz.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,11 +22,7 @@ class LoginFragment : Fragment() {
     private val viewModel: LoginViewModel by viewModels()
     private lateinit var binding: FragmentLoginBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -65,7 +61,9 @@ class LoginFragment : Fragment() {
                     displayProgressBar(false)
                     binding.inputErrHint.text = ""
                     state.data?.let { data ->
-                        //TODO
+                        val bundle = Bundle()
+                        bundle.putParcelable("data", data)
+                        findNavController().navigate(R.id.action_loginFragment_to_hubFragment, bundle)
                     }
                 }
                 is UiState.Error -> {
@@ -86,7 +84,7 @@ class LoginFragment : Fragment() {
         if (message != null) {
             Toast.makeText(context, message, Toast.LENGTH_LONG).show()
         } else {
-            //Toast.makeText(context, "Unknown error", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, resources.getString(R.string.default_error_message), Toast.LENGTH_LONG).show()
         }
     }
 
@@ -146,6 +144,7 @@ class LoginFragment : Fragment() {
     private fun hideKeyboardFrom() {
         (requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
             requireView().windowToken,
-            0)
+            0
+        )
     }
 }

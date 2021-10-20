@@ -1,8 +1,11 @@
 package com.lampa.dogiz.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class UserAddress(
 
     @SerializedName("country")
@@ -12,4 +15,4 @@ data class UserAddress(
     @SerializedName("city")
     @Expose
     var city: String?,
-)
+) : Parcelable

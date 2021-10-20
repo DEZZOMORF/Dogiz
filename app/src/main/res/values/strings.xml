@@ -8,4 +8,5 @@
     <string name="login_code_subtitle">Please enter confirmation code from sms</string>
     <string name="login_err_code_subtitle">Wrong confirmation code</string>
     <string name="btnContinue">CONTINUE</string>
+    <string name="default_error_message">Unknown error</string>
 </resources>
