@@ -7,9 +7,9 @@ data class UserAddress(
 
     @SerializedName("country")
     @Expose
-    var country: String,
+    var country: String?,
 
     @SerializedName("city")
     @Expose
-    var city: String,
+    var city: String?,
 )

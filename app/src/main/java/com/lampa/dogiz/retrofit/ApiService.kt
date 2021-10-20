@@ -1,6 +1,5 @@
 package com.lampa.dogiz.retrofit
 
-import com.lampa.dogiz.model.CheckCodeResponse
 import com.lampa.dogiz.model.LoginCode
 import com.lampa.dogiz.util.NetworkUrls
 import retrofit2.Response

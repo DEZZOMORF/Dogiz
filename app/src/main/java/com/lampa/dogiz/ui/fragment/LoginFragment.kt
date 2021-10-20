@@ -66,9 +66,7 @@ class LoginFragment : Fragment() {
                     binding.inputErrHint.text = ""
                     state.data?.let { data ->
                         when(data.step) {
-                            Step.SIGNUP -> {
-                                //TODO
-                            }
+                            Step.SIGNUP -> displayError(resources.getString(R.string.signup))
                             Step.HUB -> {
                                 //TODO
                             }
@@ -91,9 +89,9 @@ class LoginFragment : Fragment() {
 
     private fun displayError(message: String?) {
         if (message != null) {
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, message, Toast.LENGTH_LONG).show()
         } else {
-            Toast.makeText(context, "Unknown error", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context, "Unknown error", Toast.LENGTH_LONG).show()
         }
     }
 

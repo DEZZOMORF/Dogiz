@@ -3,20 +3,19 @@ package com.lampa.dogiz.retrofit
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.lampa.dogiz.model.Auth
-import com.lampa.dogiz.model.Step
 import com.lampa.dogiz.model.User
 
 data class CheckCodeResponseEntity(
 
     @SerializedName("step")
     @Expose
-    val step: String,
+    val step: String?,
 
     @SerializedName("auth")
     @Expose
-    val auth: Auth,
+    val auth: Auth?,
 
     @SerializedName("user")
     @Expose
-    val user: User,
+    val user: User?,
 )

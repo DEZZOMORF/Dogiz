@@ -7,5 +7,5 @@ data class Dog(
 
     @SerializedName("name")
     @Expose
-    var name: String,
+    var name: String?,
 )

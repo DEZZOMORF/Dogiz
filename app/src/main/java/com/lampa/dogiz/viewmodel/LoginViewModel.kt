@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.lampa.dogiz.model.CheckCodeResponse
 import com.lampa.dogiz.model.LoginCode
 import com.lampa.dogiz.repository.LoginRepository
+import com.lampa.dogiz.util.Loger
 import com.lampa.dogiz.util.RequestState
 import com.lampa.dogiz.util.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,14 +31,14 @@ class LoginViewModel @Inject constructor(
                 is RequestState.RequestError -> {
                     setPhoneUiState.postValue(
                         UiState.Error(
-                            Exception(setPhoneRequestState.modelErrorEntity.message)
+                            Exception(setPhoneRequestState.requestErrorModel.message)
                         )
                     )
                 }
                 is RequestState.GeneralError -> {
                     setPhoneUiState.postValue(
                         UiState.Error(
-                            Exception("Unknown error")
+                            Exception(setPhoneRequestState.exception.message)
                         )
                     )
                 }
@@ -55,14 +56,14 @@ class LoginViewModel @Inject constructor(
                 is RequestState.RequestError -> {
                     setPhoneUiState.postValue(
                         UiState.Error(
-                            Exception(checkCodeRequestState.modelErrorEntity.message)
+                            Exception(checkCodeRequestState.requestErrorModel.message)
                         )
                     )
                 }
                 is RequestState.GeneralError -> {
                     checkCodeUiState.postValue(
                         UiState.Error(
-                            Exception("Unknown error")
+                            Exception(checkCodeRequestState.exception.message)
                         )
                     )
                 }
