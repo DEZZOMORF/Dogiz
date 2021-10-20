@@ -40,7 +40,7 @@ class LoginFragment : Fragment() {
                 is UiState.Loading -> displayProgressBar(true)
                 is UiState.Success -> {
                     displayProgressBar(false)
-                    hideKeyboardFrom()
+                    hideKeyboard()
                     state.data?.let { data ->
                         codeView(data.code)
                     }
@@ -141,7 +141,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun hideKeyboardFrom() {
+    private fun hideKeyboard() {
         (requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
             requireView().windowToken,
             0
