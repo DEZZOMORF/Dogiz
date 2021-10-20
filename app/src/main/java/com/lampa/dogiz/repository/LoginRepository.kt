@@ -49,8 +49,7 @@ class LoginRepository @Inject constructor(
                 true -> {
                     val response = apiService.checkCode(code, deviceId)
                     if (response.isSuccessful) {
-                        RequestState.Success(response.body()
-                            ?.let { checkCodeResponseMapper.mapFromEntity(it) })
+                        RequestState.Success(response.body()?.let { checkCodeResponseMapper.mapFromEntity(it) })
                     } else {
                         RequestErrorHandler().handleError(response)
                     }

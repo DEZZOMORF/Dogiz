@@ -65,12 +65,7 @@ class LoginFragment : Fragment() {
                     displayProgressBar(false)
                     binding.inputErrHint.text = ""
                     state.data?.let { data ->
-                        when(data.step) {
-                            Step.SIGNUP -> displayError(resources.getString(R.string.signup))
-                            Step.HUB -> {
-                                //TODO
-                            }
-                        }
+                        //TODO
                     }
                 }
                 is UiState.Error -> {
