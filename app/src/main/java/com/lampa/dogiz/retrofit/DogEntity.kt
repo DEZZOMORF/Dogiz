@@ -10,11 +10,11 @@ data class DogEntity(
 
     @SerializedName("_id")
     @Expose
-    var id: String?,
+    var id: String? = null,
 
     @SerializedName("name")
     @Expose
-    var name: String?,
+    var name: String? = null,
 
     @SerializedName("gender")
     @Expose
