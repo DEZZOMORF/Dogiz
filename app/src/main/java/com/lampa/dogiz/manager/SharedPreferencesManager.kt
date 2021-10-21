@@ -3,7 +3,7 @@ package com.lampa.dogiz.manager
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import com.lampa.dogiz.model.Auth
+import com.lampa.dogiz.model.login.Auth
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton

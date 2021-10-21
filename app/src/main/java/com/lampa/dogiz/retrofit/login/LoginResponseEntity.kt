@@ -1,11 +1,11 @@
-package com.lampa.dogiz.retrofit
+package com.lampa.dogiz.retrofit.login
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.lampa.dogiz.model.Auth
-import com.lampa.dogiz.model.User
+import com.lampa.dogiz.model.login.Auth
+import com.lampa.dogiz.retrofit.UserEntity
 
-data class CheckCodeResponseEntity(
+data class LoginResponseEntity(
 
     @SerializedName("step")
     @Expose

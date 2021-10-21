@@ -1,6 +1,8 @@
 package com.lampa.dogiz.retrofit
 
-import com.lampa.dogiz.model.LoginCode
+import com.lampa.dogiz.model.login.LoginSetPhoneResponse
+import com.lampa.dogiz.retrofit.hub.entity.HubResponseEntity
+import com.lampa.dogiz.retrofit.login.LoginResponseEntity
 import com.lampa.dogiz.util.NetworkUrls
 import retrofit2.Response
 import retrofit2.http.Field
@@ -16,14 +18,14 @@ interface ApiService {
         @Field("phone") phone: String,
         @Header("deviceId") deviceId: String,
         @Header("platform") platform: String = "ANDROID"
-    ): Response<LoginCode>
+    ): Response<LoginSetPhoneResponse>
 
     @FormUrlEncoded
     @POST(NetworkUrls.CHECK_CODE_URL)
     suspend fun checkCode(
         @Field("code") code: Int,
         @Header("deviceId") deviceId: String,
-    ): Response<CheckCodeResponseEntity>
+    ): Response<LoginResponseEntity>
 
     @FormUrlEncoded
     @POST(NetworkUrls.HUB)

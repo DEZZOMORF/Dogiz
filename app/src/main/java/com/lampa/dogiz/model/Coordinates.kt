@@ -6,17 +6,14 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Auth(
+data class Coordinates(
 
-    @SerializedName("accessToken")
+    @SerializedName("lat")
     @Expose
-    var accessToken: String,
+    val lat : Int?,
 
-    @SerializedName("refreshToken")
+    @SerializedName("lon")
     @Expose
-    var refreshToken: String,
+    val lon : Int?,
 
-    @SerializedName("expiresIn")
-    @Expose
-    var expiresIn: Int,
-) : Parcelable
+): Parcelable

@@ -3,9 +3,7 @@ package com.lampa.dogiz.retrofit
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.lampa.dogiz.model.CheckCodeDog
-import com.lampa.dogiz.model.Dog
-import com.lampa.dogiz.model.UserAddress
+import com.lampa.dogiz.model.Address
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -37,7 +35,7 @@ data class UserEntity(
 
     @SerializedName("address")
     @Expose
-    var address: UserAddress?,
+    var address: Address?,
 
     @SerializedName("company")
     @Expose

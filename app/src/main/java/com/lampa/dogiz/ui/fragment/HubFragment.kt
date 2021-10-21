@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.lampa.dogiz.databinding.FragmentHubBinding
-import com.lampa.dogiz.model.CheckCodeResponse
+import com.lampa.dogiz.model.login.LoginCheckCodeResponse
 import com.lampa.dogiz.util.Loger
 import com.lampa.dogiz.viewmodel.HubViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +25,7 @@ class HubFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val checkCodeResponse = requireArguments().getParcelable<CheckCodeResponse>("data")
+        val checkCodeResponse = requireArguments().getParcelable<LoginCheckCodeResponse>("data")
         Loger(checkCodeResponse.toString())
     }
 }

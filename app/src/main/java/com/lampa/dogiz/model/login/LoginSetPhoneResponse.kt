@@ -1,9 +1,9 @@
-package com.lampa.dogiz.model
+package com.lampa.dogiz.model.login
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class LoginCode(
+data class LoginSetPhoneResponse(
 
     @SerializedName("code")
     @Expose

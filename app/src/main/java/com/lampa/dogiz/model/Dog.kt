@@ -18,6 +18,7 @@ data class Dog(
     var vaccinated: Boolean? = null,
     var desc: String? = null,
     var statusQuiz: String? = null,
-    var position: Int? = null
+    var position: Int? = null,
+    var age: Int? = null
 
 ) : Parcelable

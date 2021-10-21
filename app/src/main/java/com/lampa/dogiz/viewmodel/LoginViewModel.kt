@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lampa.dogiz.manager.SharedPreferencesManager
-import com.lampa.dogiz.model.CheckCodeResponse
-import com.lampa.dogiz.model.LoginCode
+import com.lampa.dogiz.model.login.LoginCheckCodeResponse
+import com.lampa.dogiz.model.login.LoginSetPhoneResponse
 import com.lampa.dogiz.model.Step
 import com.lampa.dogiz.repository.LoginRepository
 import com.lampa.dogiz.util.RequestState
@@ -24,8 +24,8 @@ class LoginViewModel @Inject constructor(
         const val SIGNUP = "User not found"
     }
 
-    var setPhoneUiState: MutableLiveData<UiState<LoginCode?>> = MutableLiveData()
-    var checkCodeUiState: MutableLiveData<UiState<CheckCodeResponse?>> = MutableLiveData()
+    var setPhoneUiState: MutableLiveData<UiState<LoginSetPhoneResponse?>> = MutableLiveData()
+    var loginCheckCodeUiState: MutableLiveData<UiState<LoginCheckCodeResponse?>> = MutableLiveData()
 
     fun setPhone(phone: String) {
         setPhoneUiState.postValue(UiState.Loading)
@@ -53,15 +53,15 @@ class LoginViewModel @Inject constructor(
     }
 
     fun checkCode(code: Int) {
-        checkCodeUiState.postValue(UiState.Loading)
+        loginCheckCodeUiState.postValue(UiState.Loading)
         viewModelScope.launch {
             when (val checkCodeRequestState = loginRepository.checkCode(code)) {
                 is RequestState.Success -> when (checkCodeRequestState.data?.step) {
                     Step.HUB -> {
                         checkCodeRequestState.data.auth?.let { sharedPreferencesManager.setAuthData(it) }
-                        checkCodeUiState.postValue(UiState.Success(checkCodeRequestState.data))
+                        loginCheckCodeUiState.postValue(UiState.Success(checkCodeRequestState.data))
                     }
-                    Step.SIGNUP -> checkCodeUiState.postValue(
+                    Step.SIGNUP -> loginCheckCodeUiState.postValue(
                         UiState.Error(Exception(SIGNUP))
                     )
                 }
@@ -71,7 +71,7 @@ class LoginViewModel @Inject constructor(
                     )
                 }
                 is RequestState.GeneralError -> {
-                    checkCodeUiState.postValue(
+                    loginCheckCodeUiState.postValue(
                         UiState.Error(Exception(checkCodeRequestState.exception.message))
                     )
                 }

@@ -1,10 +1,11 @@
-package com.lampa.dogiz.retrofit
+package com.lampa.dogiz.retrofit.login
 
 import com.lampa.dogiz.model.User
+import com.lampa.dogiz.retrofit.UserEntity
 import com.lampa.dogiz.util.EntityMapper
 import javax.inject.Inject
 
-class UserMapper @Inject constructor() : EntityMapper<UserEntity, User> {
+class LoginUserMapper @Inject constructor() : EntityMapper<UserEntity, User> {
 
     override fun mapFromEntity(entity: UserEntity): User {
         return User(
@@ -13,7 +14,7 @@ class UserMapper @Inject constructor() : EntityMapper<UserEntity, User> {
             firstName = entity.firstName,
             lastName = entity.lastName,
             role = entity.role,
-            dogs = entity.dogs?.let { CheckCodeDogMapper().mapFromEntityList(it) },
+            dogs = entity.dogs?.let { LoginDogMapper().mapFromEntityList(it) },
             address = entity.address,
             company = entity.company
         )
@@ -26,7 +27,7 @@ class UserMapper @Inject constructor() : EntityMapper<UserEntity, User> {
             firstName = domainModel.firstName,
             lastName = domainModel.lastName,
             role = domainModel.role,
-            dogs = domainModel.dogs?.let { CheckCodeDogMapper().mapToEntityList(it) },
+            dogs = domainModel.dogs?.let { LoginDogMapper().mapToEntityList(it) },
             address = domainModel.address,
             company = domainModel.company
         )

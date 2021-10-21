@@ -54,7 +54,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun checkCodeObserver() {
-        viewModel.checkCodeUiState.observe(viewLifecycleOwner) { state ->
+        viewModel.loginCheckCodeUiState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Loading -> displayProgressBar(true)
                 is UiState.Success -> {
