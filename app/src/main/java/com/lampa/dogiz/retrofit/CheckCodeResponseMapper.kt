@@ -12,7 +12,7 @@ class CheckCodeResponseMapper @Inject constructor() : EntityMapper<CheckCodeResp
         return CheckCodeResponse(
             step = if(entity.step == "HUB") Step.HUB else Step.SIGNUP,
             auth = entity.auth,
-            user = entity.user
+            user = entity.user?.let { UserMapper().mapFromEntity(it) }
         )
     }
 
@@ -20,7 +20,7 @@ class CheckCodeResponseMapper @Inject constructor() : EntityMapper<CheckCodeResp
         return CheckCodeResponseEntity(
             step = domainModel.step.toString(),
             auth = domainModel.auth,
-            user = domainModel.user
+            user = domainModel.user?.let { UserMapper().mapToEntity(it) }
         )
     }
 }

@@ -24,4 +24,11 @@ interface ApiService {
         @Field("code") code: Int,
         @Header("deviceId") deviceId: String,
     ): Response<CheckCodeResponseEntity>
+
+    @FormUrlEncoded
+    @POST(NetworkUrls.HUB)
+    suspend fun hub(
+        @Field("dogId") dogId: Int,
+    ): Response<HubResponseEntity>
+
 }

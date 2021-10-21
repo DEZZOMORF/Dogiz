@@ -5,4 +5,5 @@ object NetworkUrls {
     const val IMAGE_URL = "https://backend-dev.dogiz.lampawork.com/static/images/"
     const val SET_PHONE_URL = "auth/set-phone/"
     const val CHECK_CODE_URL = "auth/check-code/"
+    const val HUB = "hub/"
 }

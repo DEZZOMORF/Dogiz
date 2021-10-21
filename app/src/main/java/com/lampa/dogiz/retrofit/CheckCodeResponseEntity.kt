@@ -17,5 +17,6 @@ data class CheckCodeResponseEntity(
 
     @SerializedName("user")
     @Expose
-    val user: User?,
+    val user: UserEntity?
+
 )
