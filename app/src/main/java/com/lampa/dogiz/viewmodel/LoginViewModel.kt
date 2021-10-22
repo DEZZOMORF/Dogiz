@@ -30,21 +30,21 @@ class LoginViewModel @Inject constructor(
     fun setPhone(phone: String) {
         setPhoneUiState.postValue(UiState.Loading)
         viewModelScope.launch {
-            when (val setPhoneRequestState = loginRepository.setPhone(phone)) {
+            when (val requestState = loginRepository.setPhone(phone)) {
                 is RequestState.Success -> {
-                    setPhoneUiState.postValue(UiState.Success(setPhoneRequestState.data))
+                    setPhoneUiState.postValue(UiState.Success(requestState.data))
                 }
                 is RequestState.RequestError -> {
                     setPhoneUiState.postValue(
                         UiState.Error(
-                            Exception(setPhoneRequestState.requestErrorModel.message)
+                            Exception(requestState.requestErrorModel.message)
                         )
                     )
                 }
                 is RequestState.GeneralError -> {
                     setPhoneUiState.postValue(
                         UiState.Error(
-                            Exception(setPhoneRequestState.exception.message)
+                            Exception(requestState.exception.message)
                         )
                     )
                 }
@@ -55,11 +55,11 @@ class LoginViewModel @Inject constructor(
     fun checkCode(code: Int) {
         loginCheckCodeUiState.postValue(UiState.Loading)
         viewModelScope.launch {
-            when (val checkCodeRequestState = loginRepository.checkCode(code)) {
-                is RequestState.Success -> when (checkCodeRequestState.data?.step) {
+            when (val requestState = loginRepository.checkCode(code)) {
+                is RequestState.Success -> when (requestState.data?.step) {
                     Step.HUB -> {
-                        checkCodeRequestState.data.auth?.let { sharedPreferencesManager.setAuthData(it) }
-                        loginCheckCodeUiState.postValue(UiState.Success(checkCodeRequestState.data))
+                        requestState.data.auth?.let { sharedPreferencesManager.setAuthData(it) }
+                        loginCheckCodeUiState.postValue(UiState.Success(requestState.data))
                     }
                     Step.SIGNUP -> loginCheckCodeUiState.postValue(
                         UiState.Error(Exception(SIGNUP))
@@ -67,12 +67,12 @@ class LoginViewModel @Inject constructor(
                 }
                 is RequestState.RequestError -> {
                     setPhoneUiState.postValue(
-                        UiState.Error(Exception(checkCodeRequestState.requestErrorModel.message))
+                        UiState.Error(Exception(requestState.requestErrorModel.message))
                     )
                 }
                 is RequestState.GeneralError -> {
                     loginCheckCodeUiState.postValue(
-                        UiState.Error(Exception(checkCodeRequestState.exception.message))
+                        UiState.Error(Exception(requestState.exception.message))
                     )
                 }
             }

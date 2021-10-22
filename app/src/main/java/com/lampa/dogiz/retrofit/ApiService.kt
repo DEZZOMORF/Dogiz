@@ -5,10 +5,7 @@ import com.lampa.dogiz.retrofit.hub.entity.HubResponseEntity
 import com.lampa.dogiz.retrofit.login.LoginResponseEntity
 import com.lampa.dogiz.util.NetworkUrls
 import retrofit2.Response
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -27,10 +24,9 @@ interface ApiService {
         @Header("deviceId") deviceId: String,
     ): Response<LoginResponseEntity>
 
-    @FormUrlEncoded
-    @POST(NetworkUrls.HUB)
+    @GET(NetworkUrls.HUB)
     suspend fun hub(
-        @Field("dogId") dogId: Int,
+        @Query("dogId") dogId: String? = null,
     ): Response<HubResponseEntity>
 
 }

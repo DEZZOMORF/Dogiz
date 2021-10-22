@@ -4,6 +4,7 @@ import android.content.Context
 import android.provider.Settings.Secure
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.lampa.dogiz.manager.SharedPreferencesManager
 import com.lampa.dogiz.retrofit.ApiService
 import com.lampa.dogiz.util.NetworkUrls
 import com.readystatesoftware.chuck.ChuckInterceptor
@@ -38,7 +39,7 @@ object RetrofitModule {
                 return@addInterceptor it.proceed(
                     it.request()
                         .newBuilder()
-                        //.addHeader("Authorization", "Bearer " + SharedPreferencesManager(context).userAccessToken)
+                        .addHeader("Authorization", "Bearer " + SharedPreferencesManager(context).userAccessToken)
                         .build()
                 )
             }

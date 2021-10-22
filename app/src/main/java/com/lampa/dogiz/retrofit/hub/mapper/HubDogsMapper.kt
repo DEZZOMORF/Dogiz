@@ -25,7 +25,7 @@ class HubDogsMapper @Inject constructor() : EntityMapper<DogEntity, Dog>, Entity
             desc = entity.desc,
             statusQuiz = entity.statusQuiz,
             position = entity.position,
-            age = getAge(birthday)
+            age = entity.age
         )
     }
 
@@ -41,20 +41,4 @@ class HubDogsMapper @Inject constructor() : EntityMapper<DogEntity, Dog>, Entity
         return domainModel.map { mapToEntity(it) }
     }
 
-    private fun getAge(birthday: Date?): Int? {
-        val cal = Calendar.getInstance()
-        cal.time = birthday
-        val year = cal[Calendar.YEAR]
-        val month = cal[Calendar.MONTH]
-        val day = cal[Calendar.DAY_OF_MONTH]
-
-        val date = Calendar.getInstance()
-        val today = Calendar.getInstance()
-        date[year, month] = day
-        var age = today[Calendar.YEAR] - date[Calendar.YEAR]
-        if (today[Calendar.DAY_OF_YEAR] < date[Calendar.DAY_OF_YEAR]) {
-            age--
-        }
-        return age
-    }
 }
