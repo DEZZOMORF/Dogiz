@@ -15,7 +15,7 @@ class LoginUserMapper @Inject constructor() : EntityMapper<UserEntity, User> {
             lastName = entity.lastName,
             role = entity.role,
             dogs = entity.dogs?.let { LoginDogMapper().mapFromEntityList(it) },
-            address = entity.address,
+            address = entity.address?.let { LoginAddressMapper().mapFromEntity(it) },
             company = entity.company
         )
     }
@@ -28,7 +28,7 @@ class LoginUserMapper @Inject constructor() : EntityMapper<UserEntity, User> {
             lastName = domainModel.lastName,
             role = domainModel.role,
             dogs = domainModel.dogs?.let { LoginDogMapper().mapToEntityList(it) },
-            address = domainModel.address,
+            address = domainModel.address?.let { LoginAddressMapper().mapToEntity(it) },
             company = domainModel.company
         )
     }

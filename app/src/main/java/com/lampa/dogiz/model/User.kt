@@ -13,7 +13,7 @@ data class User(
     var lastName: String?,
     var role: String?,
     var dogs: List<LoginDog>?,
-    var address: Address?,
+    var address: UserAddress?,
     var company: String?
 
-) : Parcelable
+): Parcelable

@@ -2,7 +2,7 @@ package com.lampa.dogiz.retrofit.hub.entity.content
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.lampa.dogiz.model.Address
+import com.lampa.dogiz.retrofit.AddressEntity
 
 data class ContentLostDogEntity(
 
@@ -24,6 +24,6 @@ data class ContentLostDogEntity(
 
     @SerializedName("address")
     @Expose
-    val address: Address?,
+    val addressEntity: AddressEntity?,
 
     )
