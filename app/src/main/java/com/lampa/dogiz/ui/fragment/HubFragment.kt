@@ -77,7 +77,7 @@ class HubFragment : Fragment() {
 
     private fun initViewPager() {
         with(binding.dogProfiles) {
-            dogProfilesViewPagerAdapter.onItemClickListener = { binding.dogProfiles.setCurrentItem(it, true) }
+            dogProfilesViewPagerAdapter.onItemClickListener = { setCurrentItem(it, true) }
             adapter = dogProfilesViewPagerAdapter
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
             offscreenPageLimit = 3
