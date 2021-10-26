@@ -8,10 +8,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.lampa.dogiz.R
-import com.lampa.dogiz.adapter.DogsRecyclerViewAdapter
+import com.lampa.dogiz.adapter.DogProfilesViewPagerAdapter
 import com.lampa.dogiz.databinding.FragmentHubBinding
 import com.lampa.dogiz.model.login.LoginCheckCodeResponse
+import com.lampa.dogiz.retrofit.hub.entity.HubResponseEntity
 import com.lampa.dogiz.util.SliderTransformer
 import com.lampa.dogiz.util.UiState
 import com.lampa.dogiz.viewmodel.HubViewModel
@@ -22,9 +24,10 @@ import javax.inject.Inject
 class HubFragment : Fragment() {
 
     @Inject
-    lateinit var dogsRecyclerViewAdapter: DogsRecyclerViewAdapter
+    lateinit var dogProfilesViewPagerAdapter: DogProfilesViewPagerAdapter
     private val viewModel: HubViewModel by viewModels()
     private lateinit var binding: FragmentHubBinding
+    private lateinit var list: HubResponseEntity
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentHubBinding.inflate(inflater, container, false)
@@ -47,8 +50,9 @@ class HubFragment : Fragment() {
                 is UiState.Success -> {
                     displayProgressBar(false)
                     state.data?.let { data ->
-                        dogsRecyclerViewAdapter.list = data.dogs?.content!!
-                        dogsRecyclerViewAdapter.notifyItemRangeInserted(1, data.dogs.content.size)
+                        list = data
+                        dogProfilesViewPagerAdapter.list = data.dogs?.content!!
+                        dogProfilesViewPagerAdapter.notifyItemRangeInserted(1, data.dogs.content.size)
                     }
                 }
                 is UiState.Error -> {
@@ -72,11 +76,24 @@ class HubFragment : Fragment() {
     }
 
     private fun initViewPager() {
-        with(binding.dogProfile) {
-            adapter = dogsRecyclerViewAdapter
+        with(binding.dogProfiles) {
+            dogProfilesViewPagerAdapter.onItemClickListener = { binding.dogProfiles.setCurrentItem(it, true) }
+            adapter = dogProfilesViewPagerAdapter
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
-            offscreenPageLimit = 5
-            setPageTransformer(SliderTransformer(5))
+            offscreenPageLimit = 3
+            setPageTransformer(SliderTransformer(3))
+            registerOnPageChangeCallback(object : OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    setViews(list, position)
+                }
+            })
+        }
+    }
+
+    private fun setViews(data: HubResponseEntity, position: Int) {
+        with(binding) {
+            dog = data.dogs?.content?.get(position)
         }
     }
 }

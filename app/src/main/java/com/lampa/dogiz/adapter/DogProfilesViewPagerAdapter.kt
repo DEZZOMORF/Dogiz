@@ -7,7 +7,7 @@ import com.lampa.dogiz.databinding.ItemDogBinding
 import com.lampa.dogiz.retrofit.DogEntity
 import javax.inject.Inject
 
-class DogsRecyclerViewAdapter @Inject constructor() : RecyclerView.Adapter<DogsRecyclerViewAdapter.ViewHolder>() {
+class DogProfilesViewPagerAdapter @Inject constructor() : RecyclerView.Adapter<DogProfilesViewPagerAdapter.ViewHolder>() {
 
     var list: List<DogEntity> = listOf()
     var onItemClickListener: ((Int) -> Unit)? = null
@@ -25,6 +25,9 @@ class DogsRecyclerViewAdapter @Inject constructor() : RecyclerView.Adapter<DogsR
     inner class ViewHolder(private val binding: ItemDogBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindView() {
             binding.data = list[adapterPosition]
+            binding.profileImage.setOnClickListener {
+                onItemClickListener?.invoke(adapterPosition)
+            }
         }
     }
 }

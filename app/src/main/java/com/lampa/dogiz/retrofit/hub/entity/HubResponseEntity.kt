@@ -17,9 +17,9 @@ data class HubResponseEntity(
     @Expose
     val activity: HubActivityEntity? = null,
 
-    /*@SerializedName("reward")
+    @SerializedName("reward")
     @Expose
-    val reward: ? = null*/
+    val reward: HubRewardEntity? = null,
 
     @SerializedName("recommend")
     @Expose
