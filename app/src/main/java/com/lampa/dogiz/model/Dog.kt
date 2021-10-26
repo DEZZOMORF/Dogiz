@@ -19,6 +19,7 @@ data class Dog(
     var desc: String? = null,
     var statusQuiz: String? = null,
     var position: Int? = null,
-    var age: Int? = null
+    var age: Int? = null,
+    var url: String? = null
 
 ) : Parcelable

@@ -2,8 +2,8 @@ package com.lampa.dogiz.util
 
 import android.util.Log
 
-class Loger(msg: String) {
+class Logger(msg: String) {
     init {
-        Log.e("TAG", msg )
+        Log.e("TAG", "Loger: $msg")
     }
 }

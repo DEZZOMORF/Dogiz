@@ -10,8 +10,10 @@
 
     <color name="main_violet">#7E31FD</color>
     <color name="editTextBackground">#F8FAFD</color>
+    <color name="cardBackground">#F7F9FD</color>
     <color name="button">#01C297</color>
     <color name="grey">#B3B3BC</color>
     <color name="red">#FF2F54</color>
+    <color name="green">#4AD9B8</color>
 
 </resources>

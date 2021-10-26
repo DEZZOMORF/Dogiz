@@ -5,7 +5,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/main_violet">
 
         <ImageView
             android:id="@+id/btnBack"
@@ -26,7 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/background_login_illustration" />
+            app:srcCompat="@drawable/login_background_illustration" />
 
         <ImageView
             android:id="@+id/illustration"
@@ -84,7 +85,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/phoneNumberCardView"
-            style="@style/DogizCardViewStyle"
+            style="@style/InputCardStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -116,7 +117,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnContinue"
-            style="@style/DogizCardViewStyle"
+            style="@style/InputCardStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

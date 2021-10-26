@@ -7,17 +7,22 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.viewpager2.widget.ViewPager2
 import com.lampa.dogiz.R
+import com.lampa.dogiz.adapter.DogsRecyclerViewAdapter
 import com.lampa.dogiz.databinding.FragmentHubBinding
 import com.lampa.dogiz.model.login.LoginCheckCodeResponse
-import com.lampa.dogiz.util.Loger
+import com.lampa.dogiz.util.SliderTransformer
 import com.lampa.dogiz.util.UiState
 import com.lampa.dogiz.viewmodel.HubViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HubFragment : Fragment() {
 
+    @Inject
+    lateinit var dogsRecyclerViewAdapter: DogsRecyclerViewAdapter
     private val viewModel: HubViewModel by viewModels()
     private lateinit var binding: FragmentHubBinding
 
@@ -32,6 +37,7 @@ class HubFragment : Fragment() {
         setHubObserver()
         val loginResponse = requireArguments().getParcelable<LoginCheckCodeResponse>("data")
         viewModel.getData()
+        initRecyclerView()
     }
 
     private fun setHubObserver() {
@@ -41,7 +47,8 @@ class HubFragment : Fragment() {
                 is UiState.Success -> {
                     displayProgressBar(false)
                     state.data?.let { data ->
-                        //TODO
+                        dogsRecyclerViewAdapter.list = data.dogs?.content!!
+                        dogsRecyclerViewAdapter.notifyItemRangeInserted(1, data.dogs.content.size)
                     }
                 }
                 is UiState.Error -> {
@@ -61,6 +68,15 @@ class HubFragment : Fragment() {
             Toast.makeText(context, message, Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(context, resources.getString(R.string.default_error_message), Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun initRecyclerView() {
+        with(binding.dogProfile) {
+            adapter = dogsRecyclerViewAdapter
+            orientation = ViewPager2.ORIENTATION_HORIZONTAL
+            offscreenPageLimit = 3
+            setPageTransformer(SliderTransformer(5))
         }
     }
 }

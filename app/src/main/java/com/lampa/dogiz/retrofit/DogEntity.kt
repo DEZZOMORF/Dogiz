@@ -58,6 +58,10 @@ data class DogEntity(
 
     @SerializedName("age")
     @Expose
-    var age: Int? = null
+    var age: Int? = null,
+
+    @SerializedName("url")
+    @Expose
+    var url: String? = null
 
 ) : Parcelable

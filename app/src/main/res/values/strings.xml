@@ -9,4 +9,5 @@
     <string name="login_err_code_subtitle">Wrong confirmation code</string>
     <string name="btnContinue">CONTINUE</string>
     <string name="default_error_message">Unknown error</string>
+    <string name="welcome">Good morning</string>
 </resources>
