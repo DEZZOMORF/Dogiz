@@ -37,7 +37,7 @@ class HubFragment : Fragment() {
         setHubObserver()
         val loginResponse = requireArguments().getParcelable<LoginCheckCodeResponse>("data")
         viewModel.getData()
-        initRecyclerView()
+        initViewPager()
     }
 
     private fun setHubObserver() {
@@ -71,11 +71,11 @@ class HubFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerView() {
+    private fun initViewPager() {
         with(binding.dogProfile) {
             adapter = dogsRecyclerViewAdapter
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
-            offscreenPageLimit = 3
+            offscreenPageLimit = 5
             setPageTransformer(SliderTransformer(5))
         }
     }

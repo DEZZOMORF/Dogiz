@@ -26,27 +26,30 @@ class SliderTransformer(private val offscreenPageLimit: Int) : ViewPager2.PageTr
 
             ViewCompat.setElevation(page, -abs(position))
 
-            val scaleFactor = -SCALE_FACTOR * position + DEFAULT_SCALE
-            val alphaFactor = -ALPHA_FACTOR * position + DEFAULT_ALPHA
+            val scaleRight = -SCALE_FACTOR * position + DEFAULT_SCALE
+            val scaleLeft = -SCALE_FACTOR * -position + DEFAULT_SCALE
+            val alphaRight = -ALPHA_FACTOR * position + DEFAULT_ALPHA
+            val alphaLeft = -ALPHA_FACTOR * -position + DEFAULT_ALPHA
+            val translationFactor = -(width / DEFAULT_TRANSLATION_FACTOR) * position
 
             when {
                 position >= -offscreenPageLimit + 1 && position <= 0f -> {
-                    scaleX = -SCALE_FACTOR * -position + DEFAULT_SCALE
-                    scaleY = -SCALE_FACTOR * -position + DEFAULT_SCALE
-                    translationX = -(width / DEFAULT_TRANSLATION_FACTOR) * position
-                    alpha = -ALPHA_FACTOR * -position + DEFAULT_ALPHA
+                    scaleX = scaleLeft
+                    scaleY = scaleLeft
+                    alpha = alphaLeft
+                    translationX = translationFactor
                 }
                 position <= offscreenPageLimit - 1 && position >= 0 -> {
-                    scaleX = scaleFactor
-                    scaleY = scaleFactor
-                    translationX = -(width / DEFAULT_TRANSLATION_FACTOR) * position
-                    alpha = alphaFactor
+                    scaleX = scaleRight
+                    scaleY = scaleRight
+                    alpha = alphaRight
+                    translationX = translationFactor
                 }
                 else -> {
                     scaleX = DEFAULT_SCALE
                     scaleY = DEFAULT_SCALE
-                    translationX = DEFAULT_TRANSLATION_X
                     alpha = DEFAULT_ALPHA
+                    translationX = DEFAULT_TRANSLATION_X
                 }
             }
         }
