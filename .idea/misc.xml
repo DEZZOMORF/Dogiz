@@ -3,14 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/card_notification.xml" value="0.39794871794871794" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/card_view_bg.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/card_view_style.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/coins_and_rewards.xml" value="0.39794871794871794" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/health_wellness.xml" value="0.39794871794871794" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.39794871794871794" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/notification.xml" value="0.39794871794871794" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/round_corner_toggle.xml" value="0.4041666666666667" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/score_statistics.xml" value="0.39794871794871794" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/walking_statistics.xml" value="0.39794871794871794" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/activity_main.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/cardNotification.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_dogs.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_item.xml" value="0.375" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_notification.xml" value="0.375" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_schedule.xml" value="0.375" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_view_pager.xml" value="0.25" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/code_input.xml" value="0.5" />
-        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/fragment_hub.xml" value="0.375" />
-        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/fragment_login.xml" value="0.42368640533778146" />
-        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/item_dog.xml" value="0.25" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/fragment_hub.xml" value="0.335" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/fragment_login.xml" value="0.165" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/item_dog.xml" value="1.0" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/item_schedule.xml" value="0.375" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/my_card_view.xml" value="0.335" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/rv_item_dog.xml" value="0.3880208333333333" />
       </map>
     </option>

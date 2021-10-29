@@ -5,7 +5,7 @@ import androidx.core.view.ViewCompat
 import androidx.viewpager2.widget.ViewPager2
 import kotlin.math.abs
 
-class SliderTransformer(private val offscreenPageLimit: Int) : ViewPager2.PageTransformer {
+class ProfileSliderTransformer(private val offscreenPageLimit: Int) : ViewPager2.PageTransformer {
 
     companion object {
 
@@ -33,7 +33,7 @@ class SliderTransformer(private val offscreenPageLimit: Int) : ViewPager2.PageTr
             val translationFactor = -(width / DEFAULT_TRANSLATION_FACTOR) * position
 
             when {
-                position >= -offscreenPageLimit + 1 && position <= 0f -> {
+                position <= offscreenPageLimit - 1 && position <= 0f -> {
                     scaleX = scaleLeft
                     scaleY = scaleLeft
                     alpha = alphaLeft

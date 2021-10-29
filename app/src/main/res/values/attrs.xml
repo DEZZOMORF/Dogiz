@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CardViewPager">
+        <attr name="pagerName" format="string"/>
+        <attr name="pagerButtonVisibility" format="boolean"/>
+        <attr name="title" format="string"/>
+        <attr name="text" format="string"/>
+        <attr name="cardButtonVisibility" format="boolean"/>
+    </declare-styleable>
+</resources>

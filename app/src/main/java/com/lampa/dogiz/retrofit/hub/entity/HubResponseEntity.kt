@@ -25,6 +25,10 @@ data class HubResponseEntity(
     @Expose
     val recommend: HubRecommendEntity? = null,
 
+    @SerializedName("schedule")
+    @Expose
+    val schedule: HubScheduleEntity? = null,
+
     @SerializedName("drPoop")
     @Expose
     val drPoop: HubDrPoopEntity? = null,

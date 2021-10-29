@@ -2,6 +2,7 @@ package com.lampa.dogiz.retrofit.hub.entity.content
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class ContentNotificationEntity(
 
@@ -15,7 +16,7 @@ data class ContentNotificationEntity(
 
     @SerializedName("date")
     @Expose
-    val date: String?,
+    val date: Date?,
 
     @SerializedName("notificationType")
     @Expose

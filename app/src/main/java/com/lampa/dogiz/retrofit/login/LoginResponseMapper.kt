@@ -9,7 +9,7 @@ class LoginResponseMapper @Inject constructor() : EntityMapper<LoginResponseEnti
 
     override fun mapFromEntity(entity: LoginResponseEntity): LoginCheckCodeResponse {
         return LoginCheckCodeResponse(
-            step = if(entity.step == "HUB") Step.HUB else Step.SIGNUP,
+            step = if(entity.step == "SIGNUP") Step.SIGNUP else Step.HUB,
             auth = entity.auth,
             user = entity.user?.let { LoginUserMapper().mapFromEntity(it) }
         )

@@ -12,10 +12,10 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.lampa.dogiz.R
 import com.lampa.dogiz.adapter.DogProfilesViewPagerAdapter
 import com.lampa.dogiz.databinding.FragmentHubBinding
-import com.lampa.dogiz.model.login.LoginCheckCodeResponse
-import com.lampa.dogiz.retrofit.hub.entity.HubResponseEntity
-import com.lampa.dogiz.util.SliderTransformer
+import com.lampa.dogiz.retrofit.hub.entity.content.ContentNotificationEntity
+import com.lampa.dogiz.util.ProfileSliderTransformer
 import com.lampa.dogiz.util.UiState
+import com.lampa.dogiz.util.custom_view.CardModel
 import com.lampa.dogiz.viewmodel.HubViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -25,22 +25,42 @@ class HubFragment : Fragment() {
 
     @Inject
     lateinit var dogProfilesViewPagerAdapter: DogProfilesViewPagerAdapter
+
     private val viewModel: HubViewModel by viewModels()
-    private lateinit var binding: FragmentHubBinding
-    private lateinit var list: HubResponseEntity
+    private val binding: FragmentHubBinding get() = _binding!!
+    private var _binding: FragmentHubBinding? = null
+
+    /////////////////////////////////////////////////
+    private val scheduleList: MutableList<CardModel> = mutableListOf()
+    private val faqList: MutableList<CardModel> = mutableListOf()
+    /////////////////////////////////////////////////
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentHubBinding.inflate(inflater, container, false)
+        _binding = FragmentHubBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //val loginResponse = requireArguments().getParcelable<LoginCheckCodeResponse>("data")
+
+        ////////////////////////////////////////////////
+        with(scheduleList) {
+            add(CardModel(title = "Title", text = "time", img = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/United-kingdom_flag_icon_round.svg/2048px-United-kingdom_flag_icon_round.svg.png"))
+            add(CardModel(title = "Title", text = "time"))
+        }
+        faqList.add(CardModel(title = "Loosing dog aleart ", text = "Notify neigbourhood about your dog, so they can help you to find it", buttonText = "Help"))
+
+        ////////////////////////////////////////////////
 
         setHubObserver()
-        val loginResponse = requireArguments().getParcelable<LoginCheckCodeResponse>("data")
         viewModel.getData()
-        initViewPager()
+        initViewPagers()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun setHubObserver() {
@@ -50,9 +70,8 @@ class HubFragment : Fragment() {
                 is UiState.Success -> {
                     displayProgressBar(false)
                     state.data?.let { data ->
-                        list = data
                         dogProfilesViewPagerAdapter.list = data.dogs?.content!!
-                        dogProfilesViewPagerAdapter.notifyItemRangeInserted(1, data.dogs.content.size)
+                        dogProfilesViewPagerAdapter.notifyItemRangeInserted(0, data.dogs.content.size)
                     }
                 }
                 is UiState.Error -> {
@@ -75,25 +94,21 @@ class HubFragment : Fragment() {
         }
     }
 
-    private fun initViewPager() {
-        with(binding.dogProfiles) {
+    private fun initViewPagers() {
+        with(binding.cardDogs.dogsViewPager) {
             dogProfilesViewPagerAdapter.onItemClickListener = { setCurrentItem(it, true) }
             adapter = dogProfilesViewPagerAdapter
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
             offscreenPageLimit = 3
-            setPageTransformer(SliderTransformer(3))
+            setPageTransformer(ProfileSliderTransformer(3))
             registerOnPageChangeCallback(object : OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
-                    setViews(list, position)
+                    binding.dog = dogProfilesViewPagerAdapter.list[position]
                 }
             })
         }
-    }
-
-    private fun setViews(data: HubResponseEntity, position: Int) {
-        with(binding) {
-            dog = data.dogs?.content?.get(position)
-        }
+        binding.scheduleViewPager.cardList = scheduleList
+        binding.faqViewPager.cardList = faqList
     }
 }
