@@ -73,7 +73,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginVertical="8dp"
                     app:dog="@{dog}"
                     app:reward="@{reward}" />
 
@@ -81,7 +81,7 @@
                     android:id="@+id/notificationViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="16dp"
                     app:style="notification" />
 
                 <com.lampa.dogiz.util.custom_view.CardViewPager
@@ -110,19 +110,19 @@
                     app:style="bigImage" />
 
                 <com.lampa.dogiz.util.custom_view.CardViewPager
-                    android:id="@+id/faqViewPager"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="8dp"
-                    app:pagerName="Need help?" />
-
-                <com.lampa.dogiz.util.custom_view.CardViewPager
                     android:id="@+id/moodViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="8dp"
                     app:pagerName="Feelings &amp; mood"
                     app:pagerButtonVisibility="true"/>
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/faqViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerName="Need help?" />
 
             </LinearLayout>
 

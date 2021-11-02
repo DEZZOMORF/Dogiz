@@ -44,7 +44,7 @@ class CardViewPagerAdapter constructor() : RecyclerView.Adapter<RecyclerView.Vie
             binding.imageView.setImageResource(R.drawable.notification)
             binding.card.setCardBackgroundColor(ContextCompat.getColor(binding.card.context, R.color.notification_red))
             checkPositionMargin(adapterPosition, binding.card)
-            binding.button.setOnClickListener { list[adapterPosition].onClickListener }
+            binding.button.setOnClickListener { list[adapterPosition].onClickListener?.invoke() }
         }
     }
 
@@ -52,7 +52,7 @@ class CardViewPagerAdapter constructor() : RecyclerView.Adapter<RecyclerView.Vie
         override fun bindView() {
             binding.data = list[adapterPosition]
             checkPositionMargin(adapterPosition, binding.card)
-            binding.card.setOnClickListener { list[adapterPosition].onClickListener }
+            binding.card.setOnClickListener { list[adapterPosition].onClickListener?.invoke() }
         }
     }
 
