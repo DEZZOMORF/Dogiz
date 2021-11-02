@@ -26,14 +26,14 @@
 
             <ImageView
                 android:id="@+id/imageView"
+                setImageUrl="@{data.img}"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/walking_statistics"
-                setImageUrl="@{data.img}" />
+                app:srcCompat="@drawable/walking_statistics" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -51,8 +51,8 @@
                     android:layout_height="wrap_content"
                     android:text='@{data.title}'
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -63,26 +63,39 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/button"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="@{data.buttonText == null ? View.GONE : View.VISIBLE}"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/btnGreen"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/btnGreen"
-                    android:gravity="center"
-                    android:paddingVertical="8dp"
-                    android:paddingHorizontal="16dp"
-                    android:text="@{data.buttonText}"
-                    android:textColor="@color/btnText"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="@{data.buttonText}"
+                        android:textColor="@color/btnText"
+                        android:layout_gravity="center"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        setImageUrl="@{data.btnImg}"
+                        android:visibility="@{data.btnImg == null ? View.GONE : View.VISIBLE}"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="4dp" />
+                </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

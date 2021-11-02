@@ -12,12 +12,11 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.lampa.dogiz.R
 import com.lampa.dogiz.adapter.DogProfilesViewPagerAdapter
 import com.lampa.dogiz.databinding.FragmentHubBinding
-import com.lampa.dogiz.retrofit.DogEntity
-import com.lampa.dogiz.retrofit.hub.entity.HubResponseEntity
-import com.lampa.dogiz.retrofit.hub.entity.content.ContentNotificationEntity
+import com.lampa.dogiz.util.Logger
 import com.lampa.dogiz.util.ProfileSliderTransformer
 import com.lampa.dogiz.util.UiState
 import com.lampa.dogiz.util.custom_view.CardModel
+import com.lampa.dogiz.util.custom_view.CardViewPagerAdapter
 import com.lampa.dogiz.viewmodel.HubViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -36,6 +35,8 @@ class HubFragment : Fragment() {
     private val scheduleList: MutableList<CardModel> = mutableListOf()
     private val faqList: MutableList<CardModel> = mutableListOf()
     private val recommendList: MutableList<CardModel> = mutableListOf()
+    private val moodList: MutableList<CardModel> = mutableListOf()
+    private val rewardList: MutableList<CardModel> = mutableListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentHubBinding.inflate(inflater, container, false)
@@ -59,6 +60,8 @@ class HubFragment : Fragment() {
             add(CardModel(title = "Lorem ipsum dolor sit amet", text = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur", img = "https://pbs.twimg.com/media/EKvrgoOX0AM1_oz.jpg"))
             add(CardModel(title = "Lorem ipsum dolor sit amet", text = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur", img = "https://pbs.twimg.com/media/EKvrgoOX0AM1_oz.jpg"))
         }
+        moodList.add(CardModel(title = "Great mood", text = "Updated 57 min ago", buttonText = "Update mood", onClickListener = { Toast.makeText(requireContext(), "upd", Toast.LENGTH_SHORT).show() }))
+        rewardList.add(CardModel(title = "First walk", text = "Do your first self walk", buttonText = "+10", btnImg = "https://www.iconpacks.net/icons/2/free-coin-icon-2159-thumb.png" ))
         ////////////////////////////////////////////////
 
         setHubObserver()
@@ -120,9 +123,12 @@ class HubFragment : Fragment() {
         }
         with(binding) {
             scheduleViewPager.cardList = scheduleList
+            scheduleViewPager.button.setOnClickListener { Toast.makeText(requireContext(), "click", Toast.LENGTH_SHORT).show() }
             faqViewPager.cardList = faqList
             notificationViewPager.cardList = notificationList
             recommendViewPager.cardList = recommendList
+            moodViewPager.cardList = moodList
+            rewardViewPager.cardList = rewardList
         }
     }
 }

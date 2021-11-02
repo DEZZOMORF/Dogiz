@@ -93,6 +93,14 @@
                     app:pagerName="Schedule for today" />
 
                 <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/rewardViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerName="Rewards"
+                    app:pagerButtonVisibility="true"/>
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
                     android:id="@+id/recommendViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -107,6 +115,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="8dp"
                     app:pagerName="Need help?" />
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/moodViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerName="Feelings &amp; mood"
+                    app:pagerButtonVisibility="true"/>
 
             </LinearLayout>
 

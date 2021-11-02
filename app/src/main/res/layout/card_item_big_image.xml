@@ -32,7 +32,7 @@
                 android:id="@+id/imageView"
                 setImageUrl="@{data.img}"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="175dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/walking_statistics" />

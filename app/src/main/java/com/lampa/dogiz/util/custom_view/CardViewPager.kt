@@ -2,7 +2,6 @@ package com.lampa.dogiz.util.custom_view
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -19,14 +18,14 @@ class CardViewPager(context: Context, attrs: AttributeSet) : ConstraintLayout(co
     private var pagerButtonVisibility: Boolean = false
     private var style: Int = 0
 
-    private var pagerNameView: TextView
-    private var pagerButtonView: ImageView
-    private var viewPager: ViewPager2
+    var name: TextView
+    var button: ImageView
+    var viewPager: ViewPager2
 
     init {
         inflate(context, R.layout.card_view_pager, this)
-        pagerNameView = findViewById(R.id.pagerName)
-        pagerButtonView = findViewById(R.id.pagerButton)
+        name = findViewById(R.id.pagerName)
+        button = findViewById(R.id.pagerButton)
         viewPager = findViewById(R.id.cardPager)
 
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.CardViewPager)
@@ -36,10 +35,10 @@ class CardViewPager(context: Context, attrs: AttributeSet) : ConstraintLayout(co
 
         attributes.recycle()
 
-        if (pagerButtonVisibility) pagerButtonView.visibility = VISIBLE else pagerButtonView.visibility = GONE
+        if (pagerButtonVisibility) button.visibility = VISIBLE else button.visibility = GONE
         if (pagerName != null) {
-            pagerNameView.visibility = VISIBLE
-            pagerNameView.text = pagerName
+            name.visibility = VISIBLE
+            name.text = pagerName
         }
     }
 
