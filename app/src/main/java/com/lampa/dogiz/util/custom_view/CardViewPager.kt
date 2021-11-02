@@ -2,6 +2,7 @@ package com.lampa.dogiz.util.custom_view
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +17,7 @@ class CardViewPager(context: Context, attrs: AttributeSet) : ConstraintLayout(co
 
     private var pagerName: String? = null
     private var pagerButtonVisibility: Boolean = false
+    private var style: Int = 0
 
     private var pagerNameView: TextView
     private var pagerButtonView: ImageView
@@ -29,6 +31,7 @@ class CardViewPager(context: Context, attrs: AttributeSet) : ConstraintLayout(co
 
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.CardViewPager)
         pagerButtonVisibility = attributes.getBoolean(R.styleable.CardViewPager_pagerButtonVisibility, false)
+        style = attributes.getInt(R.styleable.CardViewPager_style, 0)
         pagerName = attributes.getString(R.styleable.CardViewPager_pagerName)
 
         attributes.recycle()
@@ -43,9 +46,12 @@ class CardViewPager(context: Context, attrs: AttributeSet) : ConstraintLayout(co
     private fun initViewPager(list: List<CardModel>) {
         with(viewPager) {
             adapter = cardViewPagerAdapter
+            cardViewPagerAdapter.style = style
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
             offscreenPageLimit = 3
-            setPageTransformer(CardSliderTransformer())
+            setPageTransformer(
+                CardSliderTransformer(12.5F)
+            )
             cardViewPagerAdapter.list = list
         }
     }

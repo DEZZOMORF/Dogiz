@@ -12,6 +12,8 @@ import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.lampa.dogiz.R
 import com.lampa.dogiz.adapter.DogProfilesViewPagerAdapter
 import com.lampa.dogiz.databinding.FragmentHubBinding
+import com.lampa.dogiz.retrofit.DogEntity
+import com.lampa.dogiz.retrofit.hub.entity.HubResponseEntity
 import com.lampa.dogiz.retrofit.hub.entity.content.ContentNotificationEntity
 import com.lampa.dogiz.util.ProfileSliderTransformer
 import com.lampa.dogiz.util.UiState
@@ -30,10 +32,10 @@ class HubFragment : Fragment() {
     private val binding: FragmentHubBinding get() = _binding!!
     private var _binding: FragmentHubBinding? = null
 
-    /////////////////////////////////////////////////
+    private val notificationList: MutableList<CardModel> = mutableListOf()
     private val scheduleList: MutableList<CardModel> = mutableListOf()
     private val faqList: MutableList<CardModel> = mutableListOf()
-    /////////////////////////////////////////////////
+    private val recommendList: MutableList<CardModel> = mutableListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentHubBinding.inflate(inflater, container, false)
@@ -44,13 +46,19 @@ class HubFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //val loginResponse = requireArguments().getParcelable<LoginCheckCodeResponse>("data")
 
-        ////////////////////////////////////////////////
+        /////////////////Hardcode//////////////////////
         with(scheduleList) {
-            add(CardModel(title = "Title", text = "time", img = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/United-kingdom_flag_icon_round.svg/2048px-United-kingdom_flag_icon_round.svg.png"))
+            add(CardModel(title = "Vet service", text = "17:00", img = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/United-kingdom_flag_icon_round.svg/2048px-United-kingdom_flag_icon_round.svg.png"))
             add(CardModel(title = "Title", text = "time"))
+            add(CardModel(title = "Title2", text = "time2"))
         }
-        faqList.add(CardModel(title = "Loosing dog aleart ", text = "Notify neigbourhood about your dog, so they can help you to find it", buttonText = "Help"))
-
+        faqList.add(CardModel(title = "Loosing dog aleart", text = "Notify neigbourhood about your dog, so they can help you to find it", buttonText = "Help"))
+        notificationList.add(CardModel(title = "Don't forget about vaccines", text = "Vaccination due in 2 days"))
+        with(recommendList) {
+            add(CardModel(title = "Lorem ipsum dolor sit amet", text = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur", img = "https://pbs.twimg.com/media/EKvrgoOX0AM1_oz.jpg"))
+            add(CardModel(title = "Lorem ipsum dolor sit amet", text = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur", img = "https://pbs.twimg.com/media/EKvrgoOX0AM1_oz.jpg"))
+            add(CardModel(title = "Lorem ipsum dolor sit amet", text = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur", img = "https://pbs.twimg.com/media/EKvrgoOX0AM1_oz.jpg"))
+        }
         ////////////////////////////////////////////////
 
         setHubObserver()
@@ -70,8 +78,10 @@ class HubFragment : Fragment() {
                 is UiState.Success -> {
                     displayProgressBar(false)
                     state.data?.let { data ->
-                        dogProfilesViewPagerAdapter.list = data.dogs?.content!!
-                        dogProfilesViewPagerAdapter.notifyItemRangeInserted(0, data.dogs.content.size)
+                        data.dogs?.content?.let {
+                            dogProfilesViewPagerAdapter.list = it
+                            dogProfilesViewPagerAdapter.notifyItemRangeInserted(0, it.size)
+                        }
                     }
                 }
                 is UiState.Error -> {
@@ -108,7 +118,11 @@ class HubFragment : Fragment() {
                 }
             })
         }
-        binding.scheduleViewPager.cardList = scheduleList
-        binding.faqViewPager.cardList = faqList
+        with(binding) {
+            scheduleViewPager.cardList = scheduleList
+            faqViewPager.cardList = faqList
+            notificationViewPager.cardList = notificationList
+            recommendViewPager.cardList = recommendList
+        }
     }
 }

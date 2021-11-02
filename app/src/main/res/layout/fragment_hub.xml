@@ -12,10 +12,6 @@
             name="reward"
             type="com.lampa.dogiz.retrofit.hub.entity.content.ContentRewardEntity" />
 
-        <variable
-            name="notification"
-            type="com.lampa.dogiz.retrofit.hub.entity.content.ContentNotificationEntity" />
-
         <import type="android.view.View" />
     </data>
 
@@ -30,22 +26,25 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:background="@color/green"
                 android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:scaleType="centerCrop"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
                     app:srcCompat="@drawable/hub_background_illustration" />
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="10"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:adjustViewBounds="true"
                     app:srcCompat="@drawable/card_view_bg" />
             </LinearLayout>
@@ -54,13 +53,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingVertical="50dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="50dp"
                     android:text="@string/welcome"
                     android:textColor="@color/white"
                     android:textSize="28sp"
@@ -74,22 +73,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="8dp"
                     app:dog="@{dog}"
                     app:reward="@{reward}" />
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/notificationViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:style="notification" />
 
                 <com.lampa.dogiz.util.custom_view.CardViewPager
                     android:id="@+id/scheduleViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:pagerName="Schedule for today"
-                    app:pagerButtonVisibility="true"/>
+                    android:layout_marginVertical="8dp"
+                    app:pagerButtonVisibility="true"
+                    app:pagerName="Schedule for today" />
 
-               <com.lampa.dogiz.util.custom_view.CardViewPager
+                <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/recommendViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerButtonVisibility="true"
+                    app:pagerName="We recommend"
+                    app:style="bigImage" />
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
                     android:id="@+id/faqViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:pagerName="Need help?"/>
+                    android:layout_marginVertical="8dp"
+                    app:pagerName="Need help?" />
 
             </LinearLayout>
 
