@@ -110,6 +110,15 @@
                     app:style="bigImage" />
 
                 <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/drPoopViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerName="Dr. Poop"
+                    app:pagerButtonVisibility="true"
+                    app:style="bigButton"/>
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
                     android:id="@+id/moodViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

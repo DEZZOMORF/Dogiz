@@ -8,6 +8,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.lampa.dogiz.R
+import com.lampa.dogiz.databinding.CardItemBigButtonBinding
 import com.lampa.dogiz.databinding.CardItemBigImageBinding
 import com.lampa.dogiz.databinding.CardItemSimpleBinding
 
@@ -20,6 +21,7 @@ class CardViewPagerAdapter constructor() : RecyclerView.Adapter<RecyclerView.Vie
         return when (style) {
             1 -> NotificationViewHolder(CardItemSimpleBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false))
             2 -> BigImageViewHolder(CardItemBigImageBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false))
+            3 -> BigButtonViewHolder(CardItemBigButtonBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false))
             else -> DefaultViewHolder(CardItemSimpleBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false))
         }
     }
@@ -34,7 +36,7 @@ class CardViewPagerAdapter constructor() : RecyclerView.Adapter<RecyclerView.Vie
         override fun bindView() {
             binding.data = list[adapterPosition]
             checkPositionMargin(adapterPosition, binding.card)
-            binding.button.setOnClickListener { list[adapterPosition].onClickListener?.invoke() }
+            list[adapterPosition].onClickListener?.let { click -> binding.button.setOnClickListener { click.invoke() } }
         }
     }
 
@@ -44,7 +46,7 @@ class CardViewPagerAdapter constructor() : RecyclerView.Adapter<RecyclerView.Vie
             binding.imageView.setImageResource(R.drawable.notification)
             binding.card.setCardBackgroundColor(ContextCompat.getColor(binding.card.context, R.color.notification_red))
             checkPositionMargin(adapterPosition, binding.card)
-            binding.button.setOnClickListener { list[adapterPosition].onClickListener?.invoke() }
+            list[adapterPosition].onClickListener?.let { click -> binding.button.setOnClickListener { click.invoke() } }
         }
     }
 
@@ -52,7 +54,16 @@ class CardViewPagerAdapter constructor() : RecyclerView.Adapter<RecyclerView.Vie
         override fun bindView() {
             binding.data = list[adapterPosition]
             checkPositionMargin(adapterPosition, binding.card)
-            binding.card.setOnClickListener { list[adapterPosition].onClickListener?.invoke() }
+            list[adapterPosition].onClickListener?.let { click -> binding.card.setOnClickListener { click.invoke() } }
+        }
+    }
+
+    inner class BigButtonViewHolder(private val binding: CardItemBigButtonBinding) : ViewHolder(binding.root) {
+        override fun bindView() {
+            binding.data = list[adapterPosition]
+            checkPositionMargin(adapterPosition, binding.card)
+            list[adapterPosition].onClickListener?.let { click -> binding.button.setOnClickListener { click.invoke() } }
+
         }
     }
 

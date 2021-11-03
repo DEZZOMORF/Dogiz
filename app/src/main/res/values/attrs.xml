@@ -10,6 +10,7 @@
             <enum name="simple" value="0" />
             <enum name="notification" value="1" />
             <enum name="bigImage" value="2" />
+            <enum name="bigButton" value="3" />
         </attr>
     </declare-styleable>
 </resources>
