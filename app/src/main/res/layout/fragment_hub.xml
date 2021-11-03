@@ -93,6 +93,15 @@
                     app:pagerName="Schedule for today" />
 
                 <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/activityViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerButtonVisibility="true"
+                    app:pagerName="Today activity"
+                    app:style="bigButton"/>
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
                     android:id="@+id/rewardViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

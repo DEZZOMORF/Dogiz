@@ -28,15 +28,15 @@
                 android:id="@+id/imageView"
                 setImageUrl="@{data.img}"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
+                android:visibility="@{data.img == null ? View.GONE : View.VISIBLE}"
                 app:layout_constraintBottom_toTopOf="@+id/button"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/walking_statistics" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -45,6 +45,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="vertical"
+                android:visibility="@{data.title == null ? View.GONE : View.VISIBLE}"
                 app:layout_constraintBottom_toTopOf="@+id/button"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,17 +54,33 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text='@{data.title}'
+                    android:text='@{data.label}'
+                    android:textColor="@color/black"
+                    android:visibility="@{data.label == null ? View.GONE : View.VISIBLE}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
+                    android:text='@{data.title}'
                     android:textColor="@color/black"
                     android:textSize="24sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="@{data.title == null ? View.GONE : View.VISIBLE}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{data.subtitle}'
+                    android:textColor="@color/black"
+                    android:visibility="@{data.subtitle == null ? View.GONE : View.VISIBLE}" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text='@{data.text}'
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:visibility="@{data.text == null ? View.GONE : View.VISIBLE}" />
             </LinearLayout>
 
             <com.google.android.material.card.MaterialCardView
@@ -84,6 +101,8 @@
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:text="@{data.buttonText}"
+                    android:textAllCaps="true"
+                    android:textSize="20sp"
                     android:textColor="@color/btnText"
                     android:textStyle="bold" />
 
