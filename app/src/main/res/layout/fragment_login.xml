@@ -85,7 +85,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/phoneNumberCardView"
-            style="@style/InputCardStyle"
+            style="@style/DogizCardStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -117,7 +117,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/btnContinue"
-            style="@style/InputCardStyle"
+            style="@style/DogizCardStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

@@ -65,7 +65,7 @@ class HubFragment : Fragment() {
         moodList.add(CardModel(title = "Great mood", text = "Updated 57 min ago", buttonText = "Update mood", onClickListener = { Toast.makeText(requireContext(), "upd", Toast.LENGTH_SHORT).show() }))
         rewardList.add(CardModel(title = "First walk", text = "Do your first self walk", buttonText = "+10", btnImg = "https://www.iconpacks.net/icons/2/free-coin-icon-2159-thumb.png" ))
         drPoopList.add(CardModel(title = "Hesitating about your dog’s health?", text = "Dr. Poop will answer the relevant dog's owners questions", buttonText = "Examinate", img = "https://pbs.twimg.com/media/EKvrgoOX0AM1_oz.jpg", onClickListener = { Toast.makeText(requireContext(), "exmnt", Toast.LENGTH_SHORT).show() } ))
-        activityList.add(CardModel(label = "label", title = "3.54 km", subtitle = "3.54 km • 19:03 - 19:38", text="text", buttonText = "Do the walk", img = "https://clipart-best.com/img/gps-icon/gps-icon-clip-art-13.png", onClickListener = { Toast.makeText(requireContext(), "start/end the walk", Toast.LENGTH_SHORT).show() } ))
+        activityList.add(CardModel(label = "Label", title = "3.54 km", subtitle = "35 min • 19:03 - 19:38", text="Self walking", buttonText = "Do the walk", img = "https://clipart-best.com/img/gps-icon/gps-icon-clip-art-13.png", onClickListener = { Toast.makeText(requireContext(), "start/end the walk", Toast.LENGTH_SHORT).show() } ))
         ////////////////////////////////////////////////
 
         setHubObserver()

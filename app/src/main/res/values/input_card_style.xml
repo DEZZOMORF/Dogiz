@@ -2,7 +2,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style
-        name="InputCardStyle" parent="CardView">
+        name="DogizCardStyle" parent="CardView">
         <item name="cardCornerRadius">12dp</item>
         <item name="cardElevation">0dp</item>
         <item name="cardBackgroundColor">@color/white</item>
