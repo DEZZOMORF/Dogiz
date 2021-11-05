@@ -7,22 +7,18 @@ data class ContentJourneyEntity(
 
     @SerializedName("title")
     @Expose
-    val title: String?,
+    val title: String? = null,
 
     @SerializedName("desc")
     @Expose
-    val desc: String?,
+    val desc: String? = null,
 
     @SerializedName("typeEvent")
     @Expose
-    val typeEvent: String?,
+    val typeEvent: String? = null,
 
-    @SerializedName("createDate")
+    @SerializedName("date")
     @Expose
-    val createDate: String?,
-
-    @SerializedName("updateDate")
-    @Expose
-    val updateDate: String?,
+    val date: String? = null,
 
 )

@@ -8,7 +8,7 @@ data class HubJourneyEntity(
 
     @SerializedName("content")
     @Expose
-    val contentJourney: List<ContentJourneyEntity>?,
+    val content: List<ContentJourneyEntity>?,
 
     @SerializedName("order")
     @Expose
