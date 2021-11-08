@@ -1,12 +1,10 @@
 package com.lampa.dogiz.ui.fragment
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,18 +14,12 @@ import com.lampa.dogiz.R
 import com.lampa.dogiz.adapter.DogProfilesViewPagerAdapter
 import com.lampa.dogiz.adapter.JourneyAdapter
 import com.lampa.dogiz.databinding.FragmentHubBinding
-import com.lampa.dogiz.model.Journey
 import com.lampa.dogiz.retrofit.hub.mapper.ContentJourneyMapper
-import com.lampa.dogiz.util.Logger
 import com.lampa.dogiz.util.ProfileSliderTransformer
 import com.lampa.dogiz.util.UiState
 import com.lampa.dogiz.util.custom_view.CardModel
 import com.lampa.dogiz.viewmodel.HubViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -125,7 +117,8 @@ class HubFragment : Fragment() {
                 text = "Dr. Poop will answer the relevant dog's owners questions",
                 buttonText = "Examinate",
                 img = "https://pbs.twimg.com/media/EKvrgoOX0AM1_oz.jpg",
-                onClickListener = { Toast.makeText(requireContext(), "exmnt", Toast.LENGTH_SHORT).show() }))
+                onClickListener = { Toast.makeText(requireContext(), "exmnt", Toast.LENGTH_SHORT).show() })
+        )
         activityList.add(
             CardModel(
                 label = "Label",
@@ -134,7 +127,8 @@ class HubFragment : Fragment() {
                 text = "Self walking",
                 buttonText = "Do the walk",
                 img = "https://clipart-best.com/img/gps-icon/gps-icon-clip-art-13.png",
-                onClickListener = { Toast.makeText(requireContext(), "start/end the walk", Toast.LENGTH_SHORT).show() }))
+                onClickListener = { Toast.makeText(requireContext(), "start/end the walk", Toast.LENGTH_SHORT).show() })
+        )
         ////////////////////////////////////////////////
 
         setHubObserver()
@@ -148,7 +142,7 @@ class HubFragment : Fragment() {
     }
 
     private fun setHubObserver() {
-        viewModel.setPhoneUiState.observe(viewLifecycleOwner) { state ->
+        viewModel.hubUiState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is UiState.Loading -> displayProgressBar(true)
                 is UiState.Success -> {

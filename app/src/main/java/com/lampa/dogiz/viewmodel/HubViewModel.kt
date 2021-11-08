@@ -15,24 +15,24 @@ import javax.inject.Inject
 class HubViewModel @Inject constructor(
     private val hubRepository: HubRepository,
 ) : ViewModel() {
-    var setPhoneUiState: MutableLiveData<UiState<HubResponseEntity?>> = MutableLiveData()
+    var hubUiState: MutableLiveData<UiState<HubResponseEntity?>> = MutableLiveData()
 
     fun getData(dogId: String? = null) {
-        setPhoneUiState.postValue(UiState.Loading)
+        hubUiState.postValue(UiState.Loading)
         viewModelScope.launch {
             when (val hubRequestState = hubRepository.getData(dogId)) {
                 is RequestState.Success -> {
-                    setPhoneUiState.postValue(UiState.Success(hubRequestState.data))
+                    hubUiState.postValue(UiState.Success(hubRequestState.data))
                 }
                 is RequestState.RequestError -> {
-                    setPhoneUiState.postValue(
+                    hubUiState.postValue(
                         UiState.Error(
                             Exception(hubRequestState.requestErrorModel.message)
                         )
                     )
                 }
                 is RequestState.GeneralError -> {
-                    setPhoneUiState.postValue(
+                    hubUiState.postValue(
                         UiState.Error(
                             Exception(hubRequestState.exception.message)
                         )
