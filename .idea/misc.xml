@@ -7,6 +7,7 @@
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/card_view_bg.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/card_view_style.xml" value="0.4041666666666667" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/coins_and_rewards.xml" value="0.39794871794871794" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/gradient.xml" value="0.39794871794871794" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/health_wellness.xml" value="0.39794871794871794" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.39794871794871794" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/drawable/notification.xml" value="0.39794871794871794" />
@@ -24,7 +25,7 @@
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_schedule.xml" value="0.375" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_view_pager.xml" value="0.25" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/code_input.xml" value="0.5" />
-        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/fragment_hub.xml" value="0.375" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/fragment_hub.xml" value="0.335" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/fragment_login.xml" value="0.165" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/item_dog.xml" value="0.25" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/item_schedule.xml" value="0.375" />
