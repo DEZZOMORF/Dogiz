@@ -18,5 +18,6 @@
     <color name="notification_red">#FFE6EB</color>
     <color name="btnGreen">#EDFBF8</color>
     <color name="btnText">#00A47F</color>
+    <color name="transparent">#00000000</color>
 
 </resources>

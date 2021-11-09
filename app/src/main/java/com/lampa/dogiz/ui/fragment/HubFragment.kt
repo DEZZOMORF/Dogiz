@@ -64,6 +64,9 @@ class HubFragment : Fragment() {
             )
             add(CardModel(title = "Title", text = "time"))
             add(CardModel(title = "Title2", text = "time2"))
+            add(CardModel(title = "Title2", text = "time2"))
+            add(CardModel(title = "Title2", text = "time2"))
+            add(CardModel(title = "Title2", text = "time2"))
         }
         faqList.add(
             CardModel(
@@ -193,7 +196,7 @@ class HubFragment : Fragment() {
             })
         }
         with(binding.journey.rv) {
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = object : LinearLayoutManager(requireContext()){ override fun canScrollVertically(): Boolean { return false } }
             adapter = journeyAdapter
         }
         with(binding) {

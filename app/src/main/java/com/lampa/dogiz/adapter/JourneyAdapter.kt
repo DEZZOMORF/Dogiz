@@ -13,6 +13,7 @@ import javax.inject.Inject
 class JourneyAdapter @Inject constructor() : RecyclerView.Adapter<JourneyAdapter.ViewHolder>() {
 
     var list: List<Journey> = listOf()
+    private val limit = 4
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(JourneyItemBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false))
@@ -22,7 +23,13 @@ class JourneyAdapter @Inject constructor() : RecyclerView.Adapter<JourneyAdapter
         viewHolder.bindView()
     }
 
-    override fun getItemCount() = list.size
+    override fun getItemCount(): Int {
+        return if(list.size > limit){
+            limit;
+        } else {
+            list.size;
+        }
+    }
 
     inner class ViewHolder(private val binding: JourneyItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindView() {

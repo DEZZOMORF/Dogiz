@@ -5,7 +5,8 @@ import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.viewpager2.widget.ViewPager2
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.lampa.dogiz.R
 
 class CardViewPager(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
@@ -20,13 +21,13 @@ class CardViewPager(context: Context, attrs: AttributeSet) : ConstraintLayout(co
 
     var name: TextView
     var button: ImageView
-    var viewPager: ViewPager2
+    var recyclerView: RecyclerView
 
     init {
         inflate(context, R.layout.card_view_pager, this)
         name = findViewById(R.id.pagerName)
         button = findViewById(R.id.pagerButton)
-        viewPager = findViewById(R.id.cardPager)
+        recyclerView = findViewById(R.id.cardPager)
 
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.CardViewPager)
         pagerButtonVisibility = attributes.getBoolean(R.styleable.CardViewPager_pagerButtonVisibility, false)
@@ -43,14 +44,10 @@ class CardViewPager(context: Context, attrs: AttributeSet) : ConstraintLayout(co
     }
 
     private fun initViewPager(list: List<CardModel>) {
-        with(viewPager) {
+        LinearSnapHelper().attachToRecyclerView(recyclerView)
+        with(recyclerView) {
             adapter = cardViewPagerAdapter
             cardViewPagerAdapter.style = style
-            orientation = ViewPager2.ORIENTATION_HORIZONTAL
-            offscreenPageLimit = 3
-            setPageTransformer(
-                CardSliderTransformer(12.5F)
-            )
             cardViewPagerAdapter.list = list
         }
     }

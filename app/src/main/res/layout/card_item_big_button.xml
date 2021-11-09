@@ -16,7 +16,6 @@
         style="@style/DogizCardStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="40dp"
         app:strokeWidth="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout

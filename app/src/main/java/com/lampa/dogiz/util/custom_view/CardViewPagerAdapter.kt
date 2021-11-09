@@ -7,10 +7,11 @@ import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.lampa.dogiz.R
+import com.lampa.dogiz.*
 import com.lampa.dogiz.databinding.CardItemBigButtonBinding
 import com.lampa.dogiz.databinding.CardItemBigImageBinding
 import com.lampa.dogiz.databinding.CardItemSimpleBinding
+import android.content.Context
 
 class CardViewPagerAdapter constructor() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -35,7 +36,7 @@ class CardViewPagerAdapter constructor() : RecyclerView.Adapter<RecyclerView.Vie
     inner class DefaultViewHolder(private val binding: CardItemSimpleBinding) : ViewHolder(binding.root) {
         override fun bindView() {
             binding.data = list[adapterPosition]
-            checkPositionMargin(adapterPosition, binding.card)
+            checkPositionMargin(itemView.context, adapterPosition, binding.card)
             list[adapterPosition].onClickListener?.let { click -> binding.button.setOnClickListener { click.invoke() } }
         }
     }
@@ -45,7 +46,7 @@ class CardViewPagerAdapter constructor() : RecyclerView.Adapter<RecyclerView.Vie
             binding.data = list[adapterPosition]
             binding.imageView.setImageResource(R.drawable.notification)
             binding.card.setCardBackgroundColor(ContextCompat.getColor(binding.card.context, R.color.notification_red))
-            checkPositionMargin(adapterPosition, binding.card)
+            checkPositionMargin(itemView.context, adapterPosition, binding.card)
             list[adapterPosition].onClickListener?.let { click -> binding.button.setOnClickListener { click.invoke() } }
         }
     }
@@ -53,7 +54,7 @@ class CardViewPagerAdapter constructor() : RecyclerView.Adapter<RecyclerView.Vie
     inner class BigImageViewHolder(private val binding: CardItemBigImageBinding) : ViewHolder(binding.root) {
         override fun bindView() {
             binding.data = list[adapterPosition]
-            checkPositionMargin(adapterPosition, binding.card)
+            checkPositionMargin(itemView.context, adapterPosition, binding.card)
             list[adapterPosition].onClickListener?.let { click -> binding.card.setOnClickListener { click.invoke() } }
         }
     }
@@ -61,7 +62,7 @@ class CardViewPagerAdapter constructor() : RecyclerView.Adapter<RecyclerView.Vie
     inner class BigButtonViewHolder(private val binding: CardItemBigButtonBinding) : ViewHolder(binding.root) {
         override fun bindView() {
             binding.data = list[adapterPosition]
-            checkPositionMargin(adapterPosition, binding.card)
+            checkPositionMargin(itemView.context, adapterPosition, binding.card)
             list[adapterPosition].onClickListener?.let { click -> binding.button.setOnClickListener { click.invoke() } }
 
         }
@@ -71,11 +72,33 @@ class CardViewPagerAdapter constructor() : RecyclerView.Adapter<RecyclerView.Vie
         abstract fun bindView()
     }
 
-    private fun checkPositionMargin(position: Int, card: CardView){
-        if(position == list.size-1) {
-            val cardViewParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            cardViewParams.marginEnd = 0
-            card.layoutParams = cardViewParams
+    private fun checkPositionMargin(context: Context, position: Int, card: CardView) {
+        val width: Int = context.resources.getDimension(R.dimen.card_width).toInt()
+        val margin: Int = context.resources.getDimension(R.dimen.card_margin).toInt()
+        val cardViewParams: LinearLayout.LayoutParams
+
+        if (list.size == 1) {
+            cardViewParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            cardViewParams.marginStart = margin
+            cardViewParams.marginEnd = margin
+        } else {
+            cardViewParams = LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.MATCH_PARENT);
+            when (position) {
+                0 -> {
+                    cardViewParams.marginStart = margin
+                    cardViewParams.marginEnd = margin / 2
+                }
+                list.size - 1 -> {
+                    cardViewParams.marginStart = margin / 2
+                    cardViewParams.marginEnd = margin
+                }
+                else -> {
+                    cardViewParams.marginStart = margin / 2
+                    cardViewParams.marginEnd = margin / 2
+                }
+            }
         }
+        cardViewParams.topMargin = margin / 4
+        card.layoutParams = cardViewParams
     }
 }
