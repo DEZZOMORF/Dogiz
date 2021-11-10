@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@+id/small"
+        app:constraintSetStart="@+id/big"
+        app:duration="300">
+
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:onTouchUp="autoCompleteToStart"
+            app:touchAnchorId="@id/scrollView"
+            app:touchAnchorSide="left"
+            app:touchRegionId="@id/scrollView" />
+
+    </Transition>
+
+    <ConstraintSet android:id="@id/small">
+
+        <Constraint android:id="@id/cardDogs">
+
+            <Layout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </Constraint>
+
+        <Constraint android:id="@id/welcomeText">
+
+            <PropertySet android:alpha="0" />
+
+        </Constraint>
+
+    </ConstraintSet>
+
+</MotionScene>
