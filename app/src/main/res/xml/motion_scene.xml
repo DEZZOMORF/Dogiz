@@ -27,11 +27,20 @@
         </Constraint>
 
         <Constraint android:id="@id/dogsViewPager">
-            <PropertySet android:alpha="-50" />
+            <Layout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/cardDogs"
+                app:layout_constraintStart_toStartOf="@id/cardDogs"
+                app:layout_constraintTop_toTopOf="@id/cardDogs" />
+
+            <PropertySet android:alpha="-3" />
 
             <Transform
                 android:scaleX="0.01"
-                android:scaleY="0.01" />
+                android:scaleY="0.01"
+                android:translationX="-150dp"/>
         </Constraint>
 
         <Constraint android:id="@id/dogImg">

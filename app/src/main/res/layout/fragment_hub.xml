@@ -171,18 +171,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/welcomeText" />
 
-        <include
-            android:id="@+id/dogImg"
-            layout="@layout/item_dog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible"
-            app:data='@{dog}'
-            app:layout_constraintEnd_toEndOf="@id/cardDogs"
-            app:layout_constraintStart_toStartOf="@id/cardDogs"
-            app:layout_constraintTop_toTopOf="@id/cardDogs" />
-
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/dogsViewPager"
             android:layout_width="0dp"
@@ -193,6 +181,18 @@
             app:layout_constraintBottom_toTopOf="@+id/title"
             app:layout_constraintEnd_toEndOf="@+id/cardDogs"
             app:layout_constraintStart_toStartOf="@+id/cardDogs"
+            app:layout_constraintTop_toTopOf="@id/cardDogs" />
+
+        <include
+            android:id="@+id/dogImg"
+            layout="@layout/item_dog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"
+            app:data='@{dog}'
+            app:layout_constraintEnd_toEndOf="@id/cardDogs"
+            app:layout_constraintStart_toStartOf="@id/cardDogs"
             app:layout_constraintTop_toTopOf="@id/cardDogs" />
 
         <TextView
