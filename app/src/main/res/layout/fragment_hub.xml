@@ -15,168 +15,336 @@
         <import type="android.view.View" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motionLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/motion_scene">
 
-        <androidx.constraintlayout.motion.widget.MotionLayout
-            android:id="@+id/motionLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutDescription="@xml/motion_scene"
-            app:motionDebug="SHOW_ALL">
-
-            <LinearLayout
-                android:id="@+id/backgroundLayout"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/green"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/background1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="7"
-                    app:srcCompat="@drawable/hub_background_illustration" />
-
-                <ImageView
-                    android:id="@+id/background2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    app:srcCompat="@drawable/card_view_bg" />
-            </LinearLayout>
-
-            <androidx.core.widget.NestedScrollView
-                android:id="@+id/scrollView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="-24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardDogs">
-
-                <LinearLayout
-                    android:id="@+id/scrollLinear"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:orientation="vertical"
-                    android:paddingBottom="32dp">
-
-                    <com.lampa.dogiz.util.custom_view.CardViewPager
-                        android:id="@+id/notificationViewPager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        app:style="notification" />
-
-                    <com.lampa.dogiz.util.custom_view.CardViewPager
-                        android:id="@+id/scheduleViewPager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
-                        app:pagerButtonVisibility="true"
-                        app:pagerName="Schedule for today" />
-
-                    <com.lampa.dogiz.util.custom_view.CardViewPager
-                        android:id="@+id/activityViewPager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
-                        app:pagerButtonVisibility="true"
-                        app:pagerName="Today activity"
-                        app:style="bigButton" />
-
-                    <com.lampa.dogiz.util.custom_view.CardViewPager
-                        android:id="@+id/rewardViewPager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
-                        app:pagerButtonVisibility="true"
-                        app:pagerName="Rewards" />
-
-                    <com.lampa.dogiz.util.custom_view.CardViewPager
-                        android:id="@+id/recommendViewPager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
-                        app:pagerButtonVisibility="true"
-                        app:pagerName="We recommend"
-                        app:style="bigImage" />
-
-                    <com.lampa.dogiz.util.custom_view.CardViewPager
-                        android:id="@+id/drPoopViewPager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
-                        app:pagerButtonVisibility="true"
-                        app:pagerName="Dr. Poop"
-                        app:style="bigButton" />
-
-                    <include
-                        android:id="@+id/journey"
-                        layout="@layout/journey"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
-                        android:layout_marginVertical="8dp" />
-
-                    <com.lampa.dogiz.util.custom_view.CardViewPager
-                        android:id="@+id/moodViewPager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
-                        app:pagerButtonVisibility="true"
-                        app:pagerName="Feelings &amp; mood" />
-
-                    <com.lampa.dogiz.util.custom_view.CardViewPager
-                        android:id="@+id/faqViewPager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="8dp"
-                        app:pagerName="Need help?" />
-                </LinearLayout>
-            </androidx.core.widget.NestedScrollView>
+        <LinearLayout
+            android:id="@+id/backgroundLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/green"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/gradient"
+                android:id="@+id/background1"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginBottom="-20dp"
-                app:layout_constraintBottom_toBottomOf="@+id/cardDogs"
-                app:layout_constraintTop_toTopOf="@+id/scrollView"
-                app:srcCompat="@drawable/gradient" />
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                app:srcCompat="@drawable/hub_background_illustration" />
 
-            <TextView
-                android:id="@+id/welcomeText"
+            <ImageView
+                android:id="@+id/background2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/card_view_bg" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="-24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardDogs">
+
+            <LinearLayout
+                android:id="@+id/scrollLinear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:paddingHorizontal="20dp"
-                android:text="@string/welcome"
-                android:textColor="@color/white"
-                android:textSize="28sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:paddingBottom="32dp">
 
+                <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/notificationViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:style="notification" />
 
-            <include
-                android:id="@+id/cardDogs"
-                layout="@layout/card_dogs"
-                android:layout_width="match_parent"
+                <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/scheduleViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerButtonVisibility="true"
+                    app:pagerName="Schedule for today" />
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/activityViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerButtonVisibility="true"
+                    app:pagerName="Today activity"
+                    app:style="bigButton" />
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/rewardViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerButtonVisibility="true"
+                    app:pagerName="Rewards" />
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/recommendViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerButtonVisibility="true"
+                    app:pagerName="We recommend"
+                    app:style="bigImage" />
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/drPoopViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerButtonVisibility="true"
+                    app:pagerName="Dr. Poop"
+                    app:style="bigButton" />
+
+                <include
+                    android:id="@+id/journey"
+                    layout="@layout/journey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="8dp" />
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/moodViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerButtonVisibility="true"
+                    app:pagerName="Feelings &amp; mood" />
+
+                <com.lampa.dogiz.util.custom_view.CardViewPager
+                    android:id="@+id/faqViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:pagerName="Need help?" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <ImageView
+            android:id="@+id/gradient"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="-20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardDogs"
+            app:layout_constraintTop_toTopOf="@+id/scrollView"
+            app:srcCompat="@drawable/gradient" />
+
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingHorizontal="20dp"
+            android:text="@string/welcome"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardDogs"
+            style="@style/DogizCardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/welcomeText" />
+
+        <include
+            android:id="@+id/dogImg"
+            layout="@layout/item_dog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"
+            app:data='@{dog}'
+            app:layout_constraintEnd_toEndOf="@id/cardDogs"
+            app:layout_constraintStart_toStartOf="@id/cardDogs"
+            app:layout_constraintTop_toTopOf="@id/cardDogs" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/dogsViewPager"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingTop="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/title"
+            app:layout_constraintEnd_toEndOf="@+id/cardDogs"
+            app:layout_constraintStart_toStartOf="@+id/cardDogs"
+            app:layout_constraintTop_toTopOf="@id/cardDogs" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="@{reward.title}"
+            app:layout_constraintBottom_toTopOf="@+id/name"
+            app:layout_constraintEnd_toEndOf="@+id/cardDogs"
+            app:layout_constraintStart_toStartOf="@+id/cardDogs"
+            app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="@{dog.name}"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/age"
+            app:layout_constraintEnd_toEndOf="@+id/cardDogs"
+            app:layout_constraintStart_toStartOf="@+id/cardDogs"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:id="@+id/age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text='@{dog.age != null ? dog.age + " years" : ""}'
+            app:layout_constraintBottom_toTopOf="@+id/weight"
+            app:layout_constraintEnd_toEndOf="@+id/cardDogs"
+            app:layout_constraintStart_toStartOf="@+id/cardDogs"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text='@{dog.weight != null ? dog.weight + " kilograms" : ""}'
+            app:layout_constraintBottom_toTopOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="@+id/cardDogs"
+            app:layout_constraintStart_toStartOf="@+id/cardDogs"
+            app:layout_constraintTop_toBottomOf="@+id/age" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_margin="16dp"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toEndOf="@+id/cardDogs"
+            app:layout_constraintStart_toStartOf="@+id/cardDogs"
+            app:layout_constraintTop_toBottomOf="@+id/weight" />
+
+        <LinearLayout
+            android:id="@+id/actions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardDogs"
+            app:layout_constraintEnd_toEndOf="@+id/cardDogs"
+            app:layout_constraintStart_toStartOf="@+id/cardDogs"
+            app:layout_constraintTop_toBottomOf="@+id/view">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                app:dog="@{dog}"
-                app:layout_constraintTop_toBottomOf="@id/welcomeText"
-                app:reward="@{reward}" />
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-        </androidx.constraintlayout.motion.widget.MotionLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    app:srcCompat="@drawable/walking_statistics" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Walking statistics" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    app:srcCompat="@drawable/health_wellness" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Health and wellness" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    app:srcCompat="@drawable/coins_and_rewards" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Coins and rewards" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    app:srcCompat="@drawable/score_statistics" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Score statistics" />
+            </LinearLayout>
+        </LinearLayout>
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -189,5 +357,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
 </layout>

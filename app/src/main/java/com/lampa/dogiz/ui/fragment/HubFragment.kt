@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.lampa.dogiz.adapter.DogProfilesViewPagerAdapter
 import com.lampa.dogiz.adapter.JourneyAdapter
 import com.lampa.dogiz.databinding.FragmentHubBinding
 import com.lampa.dogiz.retrofit.hub.mapper.ContentJourneyMapper
+import com.lampa.dogiz.util.Logger
 import com.lampa.dogiz.util.ProfileSliderTransformer
 import com.lampa.dogiz.util.UiState
 import com.lampa.dogiz.util.custom_view.CardModel
@@ -182,7 +184,7 @@ class HubFragment : Fragment() {
     }
 
     private fun initViewPagers() {
-        with(binding.cardDogs.dogsViewPager) {
+        with(binding.dogsViewPager) {
             dogProfilesViewPagerAdapter.onItemClickListener = { setCurrentItem(it, true) }
             adapter = dogProfilesViewPagerAdapter
             orientation = ViewPager2.ORIENTATION_HORIZONTAL

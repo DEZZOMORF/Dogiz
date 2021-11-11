@@ -18,7 +18,7 @@
             setImageUrl="@{data.url}"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:src="@color/green"
+            android:src="@color/notification_red"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,8 +43,8 @@
             </de.hdodenhof.circleimageview.CircleImageView>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@{data.weight.toString()}"
                 android:padding="8dp"
                 android:textColor="@color/white"

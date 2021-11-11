@@ -17,6 +17,8 @@
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/activity_main.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/cardNotification.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_dogs.xml" value="0.25" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_dogs2.xml" value="0.25" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_dogs3.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_item.xml" value="0.25" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_item_big_button.xml" value="0.375" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_item_big_image.xml" value="0.335" />
@@ -26,6 +28,7 @@
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/card_view_pager.xml" value="0.25" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/code_input.xml" value="0.5" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/fragment_hub.xml" value="0.335" />
+        <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/fragment_hub2.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/fragment_login.xml" value="0.165" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/item_dog.xml" value="0.25" />
         <entry key="..\:/Users/Latitude/AndroidStudioProjects/Dogiz/app/src/main/res/layout/item_schedule.xml" value="0.375" />
