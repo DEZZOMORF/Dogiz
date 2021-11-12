@@ -158,7 +158,7 @@ class HubFragment : Fragment() {
                             dogProfilesViewPagerAdapter.notifyItemRangeInserted(0, it.size)
                         }
                         data.journey?.content?.let {
-                            journeyAdapter.list = (ContentJourneyMapper().mapFromEntityList(it)).sortedByDescending { obj -> obj.date }
+                            journeyAdapter.list = (ContentJourneyMapper().mapFromEntityList(it))
                             journeyAdapter.notifyItemRangeInserted(0, it.size)
                         }
                     }

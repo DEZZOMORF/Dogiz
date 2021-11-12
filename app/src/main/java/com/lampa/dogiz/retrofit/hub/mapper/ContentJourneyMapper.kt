@@ -6,6 +6,7 @@ import com.lampa.dogiz.retrofit.hub.entity.content.ContentJourneyEntity
 import com.lampa.dogiz.util.EntityListMapper
 import com.lampa.dogiz.util.EntityMapper
 import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 class ContentJourneyMapper @Inject constructor() : EntityMapper<ContentJourneyEntity, Journey>, EntityListMapper<ContentJourneyEntity, Journey> {
@@ -20,7 +21,7 @@ class ContentJourneyMapper @Inject constructor() : EntityMapper<ContentJourneyEn
                 "SPORT" -> JourneyTypeEvent.SPORT
                 else -> JourneyTypeEvent.ACHIEVEMENT
             },
-            date = entity.date?.let { SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").parse(it) }
+            date = entity.date?.let { SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.ENGLISH).parse(it) }
         )
     }
 
@@ -29,7 +30,7 @@ class ContentJourneyMapper @Inject constructor() : EntityMapper<ContentJourneyEn
     }
 
     override fun mapFromEntityList(entity: List<ContentJourneyEntity>): List<Journey> {
-        return entity.map { mapFromEntity(it) }
+        return entity.map { mapFromEntity(it) }.sortedByDescending { obj -> obj.date }
     }
 
     override fun mapToEntityList(domainModel: List<Journey>): List<ContentJourneyEntity> {

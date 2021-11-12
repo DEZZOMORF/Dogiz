@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lampa.dogiz.databinding.JourneyItemBinding
 import com.lampa.dogiz.model.Journey
-import com.lampa.dogiz.util.Logger
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -33,15 +32,15 @@ class JourneyAdapter @Inject constructor() : RecyclerView.Adapter<JourneyAdapter
 
     inner class ViewHolder(private val binding: JourneyItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindView() {
-            try {
-                val pattern = "dd MMM"
-                val thisItemDate = SimpleDateFormat(pattern, Locale.ENGLISH).format(list[adapterPosition].date)
-                val previousItemDate = if (adapterPosition != 0) SimpleDateFormat (pattern, Locale.ENGLISH).format(list[adapterPosition - 1].date) else 0
-                if (adapterPosition == 0 || thisItemDate != previousItemDate) binding.date = thisItemDate
-                binding.data = list[adapterPosition]
-            } catch (e:Exception) {
-                Logger(e.message)
-            }
+            if (list[adapterPosition].date != null) binding.date = dateProcessing(this)
+            binding.data = list[adapterPosition]
         }
+    }
+
+    private fun dateProcessing (view: ViewHolder): String? {
+        val pattern = "dd MMM"
+        val thisItemDate = SimpleDateFormat(pattern, Locale.ENGLISH).format(list[view.adapterPosition].date!!)
+        val previousItemDate = if (view.adapterPosition != 0) SimpleDateFormat (pattern, Locale.ENGLISH).format(list[view.adapterPosition - 1].date!!) else 0
+        return if (view.adapterPosition == 0 || thisItemDate != previousItemDate) thisItemDate else null
     }
 }

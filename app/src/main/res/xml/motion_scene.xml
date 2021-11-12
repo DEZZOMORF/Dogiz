@@ -35,7 +35,7 @@
                 app:layout_constraintStart_toStartOf="@id/cardDogs"
                 app:layout_constraintTop_toTopOf="@id/cardDogs" />
 
-            <PropertySet android:alpha="-3" />
+            <PropertySet android:alpha="0" />
 
             <Transform
                 android:scaleX="0.01"
